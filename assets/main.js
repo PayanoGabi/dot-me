@@ -190,6 +190,7 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
          
         }
        console.log(document.querySelector("#pickSides"))
+       
         
         humanPlaying()
         
