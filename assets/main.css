@@ -1,0 +1,103 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container { 
+  background: aliceblue;
+  width: 70%;
+  height: 95%; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "blockOne blockTwo blockThree blockFour"
+    "blockFive blockSix blockSeven blockEight"
+    "blockNine blockTen blockEleven blockTwelve"
+    "blockThirteen blockFourteen blockFifteen blockSixteen"
+    "blockSeventeen blockEighteen blockNineteen blockTwenty";
+}
+
+.blockOne { grid-area: blockOne; }
+
+.blockTwo { grid-area: blockTwo; }
+
+.blockThree { grid-area: blockThree; }
+
+.blockFour { grid-area: blockFour; }
+
+.blockFive { grid-area: blockFive; }
+
+.blockSix { grid-area: blockSix; }
+
+.blockSeven { grid-area: blockSeven; }
+
+.blockEight { grid-area: blockEight; }
+
+.blockNine { grid-area: blockNine; }
+
+.blockTen { grid-area: blockTen; }
+
+.blockEleven { grid-area: blockEleven; }
+
+.blockTwelve { grid-area: blockTwelve; }
+
+.blockThirteen { grid-area: blockThirteen; }
+
+.blockFourteen { grid-area: blockFourteen; }
+
+.blockFifteen { grid-area: blockFifteen; }
+
+.blockSixteen { grid-area: blockSixteen; }
+
+.blockSeventeen { grid-area: blockSeventeen; }
+
+.blockEighteen { grid-area: blockEighteen; }
+
+.blockNineteen { grid-area: blockNineteen; }
+
+.blockTwenty { grid-area: blockTwenty; }
+
+.container div{
+  border: outset;
+}
+
+
+.pickPath{
+  background-color: blue;
+  width: 20%;
+  height: 30%;
+  z-index: 100;
+  position: absolute;
+}
+
+button{
+  padding:20px;
+}
+
+li button{
+  padding: 3px;
+}
+
+#pickColor{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+#playerColorA{
+  background-color:rgb(42, 255, 209);
+}
+
+#playerColorB{
+  background-color: #ff2c2c;
+  
+}
+
+#botChosen{
+  border-width: 13px;
+
+}
