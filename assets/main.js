@@ -68,6 +68,12 @@ window.onload = function(){
 
 }
 
+//
+// var movesAvail =[]
+// movesAvail.push(botBox.style.borderTopColor,botBox.style.borderBottomColor,botBox.style.borderLeftColor,botBox.style.borderRightColor)
+
+
+
 //Play Game
 var pickLine;
 var box;
@@ -99,19 +105,29 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 }       
 
     
-    
 
 
   
   function chooseLine(){
+
+
+    
+        var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
+         var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
+         var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
+         var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
       
       var playModule = document.querySelector("body > section")
       playModule.style.display ="block";
       var nextTurn = document.querySelector("#pickSides").cloneNode(true)
 
+      nextTurn.classList.add('bastard')
+      
+
       playModule.innerHTML = "You Have Selected Box " + box + "<br>Please select the line you want to play"
      // document.querySelector("#pickSides").style.display = "block";
       nextTurn.style.display = "block";
+      
          
      //document.querySelector("body > section").appendChild(document.querySelector(nextTurn))
 
@@ -170,8 +186,47 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 
     var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
     botBox.id = "botChosen";
+
+
+    if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
+
+        btnTop.addEventListener('click', function (e) {
+        alert('The button was clicked!');
+      });
+        
+      //Code language: JavaScript (javascript)
+
+       
+    }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
+        btnBottom.addEventListener('click', function (e) {
+        console.log('The button was clicked!');
+             });
+        
+        
+    }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
+        btnRight.addEventListener('click', function (e) {
+        alert('The button was clicked!');
+             });
+        
+        
+    }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
+        btnLeft.addEventListener('click', function (e) {
+        alert('The button was clicked!');
+             });
+        
+        
+        
+    }else{
+        
+    }
+
+
+
+
+
     if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
         console.log('already selected')
+        //checkPastPlays()
     }
 
 
@@ -190,9 +245,111 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
          
         }
        console.log(document.querySelector("#pickSides"))
-       
+
         
         humanPlaying()
         
 
     }
+
+
+//check playes
+var movesAvail =[]
+var nextTurn
+var seatsTaken
+//var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
+
+
+        // var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
+        //  var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
+        //  var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
+        //  var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
+
+movesAvail.forEach((e, index) => {
+
+   // console.log(movesAvail[index])
+
+ if(e == botBox.style.borderRightColor || e == botBox.style.borderLeftColor || e == botBox.style.borderTopColor || e == botBox.style.borderBottomColor){
+
+         // else if (document.querySelector("#pickSides")){
+
+     
+ console.log(e)
+    nextTurn = e;
+
+     //if(e.toString(botColor) || e.toString(humanChosenColor)) {
+
+         
+         console.log(e, index)
+         //document.querySelector("#pickSides")
+         //console.log(document.querySelector("#pickSides"))
+         //console.log(e)
+         console.log(botBox.outerHTML)
+
+
+         if(document.querySelector("#pickSides").style.display.indexOf('block') > - 1){
+
+
+            document.querySelector("#pickSides > ul > li:nth-child(1) > button").onclick = function(){
+        
+                alert('heeee')
+            } 
+        }
+   
+     
+         
+
+         
+         
+   // }
+
+
+
+
+ }
+    
+    
+})
+
+
+        //   if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
+
+        //       btnTop.addEventListener('click', function (e) {
+        //       alert('The button was clicked!');
+        //     });
+              
+        //     //Code language: JavaScript (javascript)
+
+             
+        //   }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
+        //       btnBottom.addEventListener('click', function (e) {
+        //       console.log('The button was clicked!');
+        //            });
+              
+              
+        //   }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
+        //       btnRight.addEventListener('click', function (e) {
+        //       alert('The button was clicked!');
+        //            });
+              
+              
+        //   }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
+        //       btnLeft.addEventListener('click', function (e) {
+        //       alert('The button was clicked!');
+        //            });
+              
+              
+              
+        //   }else{
+              
+        //   }
+
+         
+        if(document.querySelector("#pickSides").style.display.indexOf('block') > - 1){
+
+
+            document.querySelector("#pickSides > ul > li:nth-child(1) > button").onclick = function(){
+        
+                alert('heeee')
+            } 
+        }
