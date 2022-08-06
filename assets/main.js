@@ -69,6 +69,11 @@ window.onload = function(){
 }
 
 //
+    
+var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
+var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
+var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
+var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
 // var movesAvail =[]
 // movesAvail.push(botBox.style.borderTopColor,botBox.style.borderBottomColor,botBox.style.borderLeftColor,botBox.style.borderRightColor)
 
@@ -112,10 +117,10 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 
 
     
-        var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
-         var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
-         var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
-         var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
+        // var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
+        //  var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
+        //  var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
+        //  var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
       
       var playModule = document.querySelector("body > section")
       playModule.style.display ="block";
