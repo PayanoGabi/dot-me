@@ -173,7 +173,7 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
     var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)]; //bot pick random block
     botBox.id = "botChosen"; // add ID to bot selected box
 
-    botBox.style.backgroundColor = "black"
+    botBox.style.backgroundColor = "#f1ab21"
 
     if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
         console.log('already selected') //if the box has been played by human, message this
@@ -206,17 +206,10 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
         }
         if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
 
-            console.log(' no more moves')
+            botBox.style.backgroundColor =  "pink"
             //this box is finished
             
             }
-
-
-   // aBotsTime = [botBox.style.cssText += 'border-left-color'
-    // ,botBox.style.cssText += 'border-right-color'
-    // , botBox.style.cssText += 'border-bottom-color'
-    // , botBox.style.cssText += 'border-top-color'
-    // ]
 
 
     //select random
@@ -224,21 +217,6 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
     console.log(aBotsTurn)   
     botBox.style.cssText += aBotsTurn + ":" + botColor;
  
-    //console.log(botBox.style = aBotsTurn + ":" +botColor)
-    
-
-        // if(!aBotsTurn.indexOf(humanChosenColor) > -1 || !aBotsTurn.indexOf(botColor) > -1){
-        //     console.log('good play')
-        //     //var aBotsTurn = aBotsTime[Math.floor(Math.random()*aBotsTime.length)]; 
-         
-        // }
-        
-        // if(aBotsTurn.indexOf(humanChosenColor) > -1 || aBotsTurn.indexOf(botColor) > -1){
-        //     //var aBotsTurn = aBotsTime[Math.floor(Math.random()*aBotsTime.length)]; 
-        //     console.log(botBox)
-
-        // }
-
     
        console.log(document.querySelector("#pickSides"))
 
@@ -248,32 +226,6 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 
     }
 
-
-
-// var movesAvail =[]
-
-// if(botBox.style.borderBottomColor == ''){
-//     movesAvail.push('botBox.style.borderBottomColor')
-//     console.log('nothing bottom')
-
-//     }
-
-//     if(botBox.style.borderTopColor == ''){
-//     movesAvail.push('botBox.style.borderTopColor')
-//     console.log('nothing top')
-
-//     }
-//     if(botBox.style.borderRightColor == ''){
-//     movesAvail.push('botBox.style.borderRightColor')
-//     console.log('nothing right')
-
-
-//     }
-//     if(botBox.style.borderLeftColor == ''){
-//     movesAvail.push('botBox.style.borderTopColor')
-//     console.log('nothing left')
-
-//     }
 
 //var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
 
@@ -308,69 +260,3 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
     
     
 // })
-
-
-
-
-        //   if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
-
-        //       btnTop.addEventListener('click', function (e) {
-        //       alert('The button was clicked!');
-        //     });
-              
-        //     //Code language: JavaScript (javascript)
-
-             
-        //   }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
-        //       btnBottom.addEventListener('click', function (e) {
-        //       console.log('The button was clicked!');
-        //            });
-              
-              
-        //   }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
-        //       btnRight.addEventListener('click', function (e) {
-        //       alert('The button was clicked!');
-        //            });
-              
-              
-        //   }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
-        //       btnLeft.addEventListener('click', function (e) {
-        //       alert('The button was clicked!');
-        //            });
-              
-              
-              
-        //   }else{
-              
-        //   }
-
-         
-         // if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
-
-    //     btnTop.addEventListener('click', function (e) {
-    //     alert('The button was clicked!');
-    //   });
-
-       
-    // }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
-    //     btnBottom.addEventListener('click', function (e) {
-    //     console.log('The button was clicked!');
-    //          });
-        
-        
-    // }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
-    //     btnRight.addEventListener('click', function (e) {
-    //     alert('The button was clicked!');
-    //          });
-        
-        
-    // }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
-    //     btnLeft.addEventListener('click', function (e) {
-    //     alert('The button was clicked!');
-    //          });
-        
-        
-        
-    // }else{
-        
-    // }
