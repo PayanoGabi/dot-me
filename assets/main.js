@@ -74,12 +74,11 @@ var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button
 var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
 var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
 var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
-// var movesAvail =[]
+
 // movesAvail.push(botBox.style.borderTopColor,botBox.style.borderBottomColor,botBox.style.borderLeftColor,botBox.style.borderRightColor)
 
 
-
-//Play Game
+//Play Game Human - if any box clicked this is a humans turn
 var pickLine;
 var box;
 var clickedBlock = document.querySelectorAll("body > div > div");
@@ -110,38 +109,21 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 }       
 
     
-
-
-  
+//human choose line that they want to play
   function chooseLine(){
-
-
-    
-        // var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
-        //  var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
-        //  var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
-        //  var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
       
       var playModule = document.querySelector("body > section")
       playModule.style.display ="block";
       var nextTurn = document.querySelector("#pickSides").cloneNode(true)
 
-      nextTurn.classList.add('bastard')
-      
-
       playModule.innerHTML = "You Have Selected Box " + box + "<br>Please select the line you want to play"
-     // document.querySelector("#pickSides").style.display = "block";
+     // let human know what line they have decided
       nextTurn.style.display = "block";
-      
-         
-     //document.querySelector("body > section").appendChild(document.querySelector(nextTurn))
-
-
       
       document.querySelector("body > section").appendChild(nextTurn)
       console.log(nextTurn)
-      nextTurn.style.display= "block";
-      // document.querySelector("#pickSides").style.display= "block";
+      nextTurn.style.display= "block"; //at end of turn close body section container
+   
       
      var sides = document.querySelector("#pickSides > ul")
 
@@ -152,8 +134,7 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
             pickLine.style.borderLeftColor = humanChosenColor;
             pickLine.style.borderLeftWidth=  "13px";
             document.querySelector("body > section").style.display= "none";
-           
-            playBot()
+            playBot() //after human selects , bot selects
     
         }else if(e.target.innerHTML.indexOf("Top") > -1){
             alert('You have selected the top border')
@@ -161,7 +142,7 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
              pickLine.style.borderTopWidth ="13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
-             playBot()
+             playBot() //after human selects , bot selects
 
             
         }else if(e.target.innerHTML.indexOf("Right") > -1){
@@ -170,85 +151,95 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
              pickLine.style.borderRightWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
-             playBot()
+             playBot() //after human selects , bot selects
+
         }else if(e.target.innerHTML.indexOf("Bottom") > -1){
             alert('You have selected the bottom border')
              pickLine.style.borderBottomColor = humanChosenColor;
              pickLine.style.borderBottomWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
-             playBot()
+             playBot() //after human selects , bot selects
             
         }
         
     })
     
-
   }
   
 
   function playBot(){
 
-    var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
-    botBox.id = "botChosen";
+    var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)]; //bot pick random block
+    botBox.id = "botChosen"; // add ID to bot selected box
 
-
-    if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
-
-        btnTop.addEventListener('click', function (e) {
-        alert('The button was clicked!');
-      });
-        
-      //Code language: JavaScript (javascript)
-
-       
-    }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
-        btnBottom.addEventListener('click', function (e) {
-        console.log('The button was clicked!');
-             });
-        
-        
-    }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
-        btnRight.addEventListener('click', function (e) {
-        alert('The button was clicked!');
-             });
-        
-        
-    }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
-        btnLeft.addEventListener('click', function (e) {
-        alert('The button was clicked!');
-             });
-        
-        
-        
-    }else{
-        
-    }
-
-
-
-
+    botBox.style.backgroundColor = "black"
 
     if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
-        console.log('already selected')
-        //checkPastPlays()
+        console.log('already selected') //if the box has been played by human, message this
+        
     }
 
+    var movesAvail =[]
 
-    aBotsTime = [botBox.style.cssText += 'border-left-color'
-    ,botBox.style.cssText += 'border-right-color'
-    , botBox.style.cssText += 'border-bottom-color'
-    , botBox.style.cssText += 'border-top-color'
-    ]
+        if(botBox.style.borderBottomColor == ''){
+        movesAvail.push('border-bottom-color')
+        console.log('nothing bottom')
+
+        }
+
+        if(botBox.style.borderTopColor == ''){
+        movesAvail.push('border-top-color')
+        console.log('nothing top')
+
+        }
+        if(botBox.style.borderRightColor == ''){
+        movesAvail.push('border-right-color')
+        console.log('nothing right')
+
+
+        }
+        if(botBox.style.borderLeftColor == ''){
+        movesAvail.push('border-left-color')
+        console.log('nothing left')
+
+        }
+        if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
+
+            console.log(' no more moves')
+            //this box is finished
+            
+            }
+
+
+   // aBotsTime = [botBox.style.cssText += 'border-left-color'
+    // ,botBox.style.cssText += 'border-right-color'
+    // , botBox.style.cssText += 'border-bottom-color'
+    // , botBox.style.cssText += 'border-top-color'
+    // ]
+
+
     //select random
-    var aBotsTurn = aBotsTime[Math.floor(Math.random()*aBotsTime.length)]; 
-    console.log(botBox.style = aBotsTurn + ":" +botColor)
+    var aBotsTurn = movesAvail[Math.floor(Math.random()*movesAvail.length)]; 
+    console.log(aBotsTurn)   
+    botBox.style.cssText += aBotsTurn + ":" + botColor;
+ 
+    //console.log(botBox.style = aBotsTurn + ":" +botColor)
     
 
-        if(aBotsTurn.indexOf(humanChosenColor) > -1 || aBotsTurn.indexOf(botColor) > -1){
-            console.log('seats taken')
+        // if(!aBotsTurn.indexOf(humanChosenColor) > -1 || !aBotsTurn.indexOf(botColor) > -1){
+        //     console.log('good play')
+        //     //var aBotsTurn = aBotsTime[Math.floor(Math.random()*aBotsTime.length)]; 
          
-        }
+        // }
+        
+        // if(aBotsTurn.indexOf(humanChosenColor) > -1 || aBotsTurn.indexOf(botColor) > -1){
+        //     //var aBotsTurn = aBotsTime[Math.floor(Math.random()*aBotsTime.length)]; 
+        //     console.log(botBox)
+
+        // }
+
+    
        console.log(document.querySelector("#pickSides"))
 
         
@@ -258,63 +249,67 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
     }
 
 
-//check playes
-var movesAvail =[]
-var nextTurn
-var seatsTaken
+
+// var movesAvail =[]
+
+// if(botBox.style.borderBottomColor == ''){
+//     movesAvail.push('botBox.style.borderBottomColor')
+//     console.log('nothing bottom')
+
+//     }
+
+//     if(botBox.style.borderTopColor == ''){
+//     movesAvail.push('botBox.style.borderTopColor')
+//     console.log('nothing top')
+
+//     }
+//     if(botBox.style.borderRightColor == ''){
+//     movesAvail.push('botBox.style.borderRightColor')
+//     console.log('nothing right')
+
+
+//     }
+//     if(botBox.style.borderLeftColor == ''){
+//     movesAvail.push('botBox.style.borderTopColor')
+//     console.log('nothing left')
+
+//     }
+
 //var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
 
+// movesAvail.forEach((e, index) => {
 
-        // var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
-        //  var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
-        //  var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
-        //  var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
+//    // console.log(movesAvail[index])
 
-movesAvail.forEach((e, index) => {
-
-   // console.log(movesAvail[index])
-
- if(e == botBox.style.borderRightColor || e == botBox.style.borderLeftColor || e == botBox.style.borderTopColor || e == botBox.style.borderBottomColor){
-
-         // else if (document.querySelector("#pickSides")){
-
+//  if(e == botBox.style.borderRightColor || e == botBox.style.borderLeftColor || e == botBox.style.borderTopColor || e == botBox.style.borderBottomColor){
      
- console.log(e)
-    nextTurn = e;
-
-     //if(e.toString(botColor) || e.toString(humanChosenColor)) {
-
-         
-         console.log(e, index)
-         //document.querySelector("#pickSides")
-         //console.log(document.querySelector("#pickSides"))
-         //console.log(e)
-         console.log(botBox.outerHTML)
+//  console.log(e)
 
 
-         if(document.querySelector("#pickSides").style.display.indexOf('block') > - 1){
-
-
-            document.querySelector("#pickSides > ul > li:nth-child(1) > button").onclick = function(){
-        
-                alert('heeee')
-            } 
-        }
-   
-     
-         
+//     if(e.toString(botColor) || e.toString(humanChosenColor)) {
 
          
+//          console.log(e, index)
+//          //document.querySelector("#pickSides")
+//          //console.log(document.querySelector("#pickSides"))
+//          //console.log(e)
+//          console.log(botBox.outerHTML)
+
+//             if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
+
+//                 console.log(' no more moves')
+                
+//                 }
+
+
          
-   // }
-
-
-
-
- }
+//     }
+//  }
     
     
-})
+// })
+
+
 
 
         //   if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
@@ -350,11 +345,32 @@ movesAvail.forEach((e, index) => {
         //   }
 
          
-        if(document.querySelector("#pickSides").style.display.indexOf('block') > - 1){
+         // if(botBox.outerHTML.indexOf('border-top-color') > -1 ){
 
+    //     btnTop.addEventListener('click', function (e) {
+    //     alert('The button was clicked!');
+    //   });
 
-            document.querySelector("#pickSides > ul > li:nth-child(1) > button").onclick = function(){
+       
+    // }else if(botBox.outerHTML.indexOf('border-bottom-color') > -1 ){
+    //     btnBottom.addEventListener('click', function (e) {
+    //     console.log('The button was clicked!');
+    //          });
         
-                alert('heeee')
-            } 
-        }
+        
+    // }else if(botBox.outerHTML.indexOf('border-right-color') > -1 ){
+    //     btnRight.addEventListener('click', function (e) {
+    //     alert('The button was clicked!');
+    //          });
+        
+        
+    // }else if(botBox.outerHTML.indexOf('border-left-color')> -1 ){
+    //     btnLeft.addEventListener('click', function (e) {
+    //     alert('The button was clicked!');
+    //          });
+        
+        
+        
+    // }else{
+        
+    // }
