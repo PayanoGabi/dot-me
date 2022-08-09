@@ -1,5 +1,3 @@
-var playerColorA;
-var playerColorB;
 var humanChosenColor;
 var nextPlayerHuman = true;
 var botColor;
@@ -18,7 +16,7 @@ window.onload = function(){
     document.querySelector("body > section > button").addEventListener('click', function(){
 
     document.querySelector("body > section").innerHTML= "";
-    console.log(document.getElementById('pickColor'))
+   // console.log(document.getElementById('pickColor'))
     var chooseColor = document.querySelector("#pickColor");
     document.querySelector("body > section").style.display="none"
 
@@ -40,65 +38,57 @@ window.onload = function(){
             
             humanChosenColor = event.path[0].style.backgroundColor;
 
-            if(e.id == 'playerColorA'){
+            if(e.id == 'playerColorA'){ //pick color
                 botColor = nextSib.style.backgroundColor
-                console.log(botColor)
+                //console.log(botColor)
                 
-            }else if(e.id == 'playerColorB'){
+            }else if(e.id == 'playerColorB'){ //pick color
                botColor = previousSib.style.backgroundColor
-                console.log(botColor)
-                      
+               // console.log(botColor)   
             }
 
-
              document.querySelector(".container").style.visibility = "visible";
-             //
              chooseColor.style.visibility= "hidden";  
              
-             
-    
         }
         
     })
 
-    humanPlaying() 
-   // playBot() 
+    humanPlaying() //human starts game 
 
 })
 
 }
 
-//
     
 var btnLeft = document.querySelector("#pickSides > ul > li:nth-child(1) > button")
 var btnTop = document.querySelector("#pickSides > ul > li:nth-child(2) > button")
 var btnRight = document.querySelector("#pickSides > ul > li:nth-child(3) > button")
 var btnBottom = document.querySelector("#pickSides > ul > li:nth-child(4) > button")
 
-// movesAvail.push(botBox.style.borderTopColor,botBox.style.borderBottomColor,botBox.style.borderLeftColor,botBox.style.borderRightColor)
 
-
-//Play Game Human - if any box clicked this is a humans turn
 var pickLine;
 var box;
 var clickedBlock = document.querySelectorAll("body > div > div");
 var pickAgain = document.querySelector("#pickSides").cloneNode(true)
+var cantTouchThis;
 
-       function humanPlaying(){
+       function humanPlaying(){ //Play Game (human) - if any box clicked this is a humans turn
         document.querySelector("body > section").display="block"
-           
+
         
-     
 
         if(nextPlayerHuman){
 
                 clickedBlock.forEach((e, index) => {
                 e.onclick = (event) => { 
                 box = index + 1;  
-                console.log("You clicked button number " + box);
+                //console.log("You clicked button number " + box);
                 pickLine = e;
                 e.style.backgroundColor = "yellow";
                 e.classList.add('preSelectedHumanBox')
+                
+
                 chooseLine();  
                 
                 }
@@ -111,6 +101,7 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
     
 //human choose line that they want to play
   function chooseLine(){
+      console.log(pickLine)
       
       var playModule = document.querySelector("body > section")
       playModule.style.display ="block";
@@ -121,46 +112,72 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
       nextTurn.style.display = "block";
       
       document.querySelector("body > section").appendChild(nextTurn)
-      console.log(nextTurn)
+      //console.log(nextTurn)
       nextTurn.style.display= "block"; //at end of turn close body section container
    
       
      var sides = document.querySelector("#pickSides > ul")
 
+
       sides.addEventListener('click',function(e){
 
-        if(e.target.innerHTML.indexOf("Left") > -1){
+        if(e.target.innerHTML.indexOf("Left") > -1  && pickLine.style.borderLeftColor == ''){
             alert('You have selected the left border')
-            pickLine.style.borderLeftColor = humanChosenColor;
+            pickLine.style.cssText += "border-left-color" + ":" + humanChosenColor
+            //pickLine.style.borderLeftColor = humanChosenColor;
             pickLine.style.borderLeftWidth=  "13px";
             document.querySelector("body > section").style.display= "none";
+            console.log(cantTouchThis)
             playBot() //after human selects , bot selects
     
-        }else if(e.target.innerHTML.indexOf("Top") > -1){
+        }else if(e.target.innerHTML.indexOf("Left") > -1 && !pickLine.style.borderLeftColor == ''){
+            alert('You have selected the left border - you cant choose this')
+
+        }
+
+        if(e.target.innerHTML.indexOf("Top") > -1  && pickLine.style.borderTopColor == ''){
             alert('You have selected the top border')
-             pickLine.style.borderTopColor = humanChosenColor;
+            pickLine.style.cssText += "border-top-color" + ":" + humanChosenColor
+            // pickLine.style.borderTopColor = humanChosenColor;
              pickLine.style.borderTopWidth ="13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
              playBot() //after human selects , bot selects
 
             
-        }else if(e.target.innerHTML.indexOf("Right") > -1){
+        }else if(e.target.innerHTML.indexOf("Top") > -1 && !pickLine.style.borderTopColor == ''){
+            alert('You have selected the top border - you cant choose this')
+
+        }
+
+        if(e.target.innerHTML.indexOf("Right") > -1  && pickLine.style.borderBottomColor == ''){
             alert('You have selected the right border')
-             pickLine.style.borderRightColor = humanChosenColor;
+            pickLine.style.cssText += "border-right-color" + ":" + humanChosenColor
+
+            // pickLine.style.borderRightColor = humanChosenColor
              pickLine.style.borderRightWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
              playBot() //after human selects , bot selects
 
-        }else if(e.target.innerHTML.indexOf("Bottom") > -1){
+        }else if(e.target.innerHTML.indexOf("Right") > -1 && !pickLine.style.borderRightColor == ''){
+            alert('You have selected the right border - you cant choose this')
+
+        }
+
+         if(e.target.innerHTML.indexOf("Bottom") > -1 && pickLine.style.borderBottomColor == ''){
             alert('You have selected the bottom border')
-             pickLine.style.borderBottomColor = humanChosenColor;
+            pickLine.style.cssText += "border-bottom-color" + ":" + humanChosenColor
+
+             //pickLine.style.borderBottomColor = humanChosenColor;
              pickLine.style.borderBottomWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
              playBot() //after human selects , bot selects
             
+        }else if(e.target.innerHTML.indexOf("Bottom") > -1 && !pickLine.style.borderBottomColor == ''){
+            alert('You have selected the bottom border - you cant choose this')
+
         }
         
     })
@@ -175,33 +192,33 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 
     botBox.style.backgroundColor = "#f1ab21"
 
-    if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
-        console.log('already selected') //if the box has been played by human, message this
+    // if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
+    //     console.log('already selected') //if the box has been played by human, message this
         
-    }
+    // }
 
     var movesAvail =[]
 
         if(botBox.style.borderBottomColor == ''){
         movesAvail.push('border-bottom-color')
-        console.log('nothing bottom')
+        //console.log('nothing bottom')
 
         }
 
         if(botBox.style.borderTopColor == ''){
         movesAvail.push('border-top-color')
-        console.log('nothing top')
+        //console.log('nothing top')
 
         }
         if(botBox.style.borderRightColor == ''){
         movesAvail.push('border-right-color')
-        console.log('nothing right')
+        //console.log('nothing right')
 
 
         }
         if(botBox.style.borderLeftColor == ''){
         movesAvail.push('border-left-color')
-        console.log('nothing left')
+        //console.log('nothing left')
 
         }
         if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
@@ -214,12 +231,9 @@ var pickAgain = document.querySelector("#pickSides").cloneNode(true)
 
     //select random
     var aBotsTurn = movesAvail[Math.floor(Math.random()*movesAvail.length)]; 
-    console.log(aBotsTurn)   
+   // console.log(aBotsTurn)  - the bots line selection
     botBox.style.cssText += aBotsTurn + ":" + botColor;
  
-    
-       console.log(document.querySelector("#pickSides"))
-
         
         humanPlaying()
         
