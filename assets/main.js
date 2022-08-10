@@ -150,7 +150,7 @@ var cantTouchThis;
 
         }
 
-        if(e.target.innerHTML.indexOf("Right") > -1  && pickLine.style.borderBottomColor == ''){
+        if(e.target.innerHTML.indexOf("Right") > -1  && pickLine.style.borderRightColor == ''){
             alert('You have selected the right border')
             pickLine.style.cssText += "border-right-color" + ":" + humanChosenColor
 
@@ -179,6 +179,14 @@ var cantTouchThis;
             alert('You have selected the bottom border - you cant choose this')
 
         }
+
+        if(!pickLine.style.borderLeftColor == '' && !pickLine.style.borderTopColor == '' && !pickLine.style.borderBottomColor == '' && !pickLine.style.borderRightColor == ''){
+
+            pickLine.style.backgroundColor =  "pink";
+            pickLine.id = "noMoreMoves"
+            //this box is finished
+            
+            }
         
     })
     
@@ -224,6 +232,7 @@ var cantTouchThis;
         if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
 
             botBox.style.backgroundColor =  "pink"
+            botBox.id = "noMoreMoves"
             //this box is finished
             
             }
