@@ -101,7 +101,7 @@ var cantTouchThis;
     
 //human choose line that they want to play
   function chooseLine(){
-      console.log(pickLine)
+      //console.log(pickLine)
       
       var playModule = document.querySelector("body > section")
       playModule.style.display ="block";
@@ -250,36 +250,49 @@ var cantTouchThis;
     }
 
 
-//var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
 
-// movesAvail.forEach((e, index) => {
+  //check win /////////////////////////////////////////
 
-//    // console.log(movesAvail[index])
+ /* var botWin
+  var humanWin
 
-//  if(e == botBox.style.borderRightColor || e == botBox.style.borderLeftColor || e == botBox.style.borderTopColor || e == botBox.style.borderBottomColor){
-     
-//  console.log(e)
+  checkWinner = []
+  checkWinner.push(botBox.style.borderBottomColor,botBox.style.borderTopColor,botBox.style.borderLeftColor, botBox.style.borderRightColor)
 
+  checkWinner.forEach(function(e){
 
-//     if(e.toString(botColor) || e.toString(humanChosenColor)) {
+    botWin = 0
+    humanWin = 0
+    if(e.indexOf(botColor) > e.indexOf(humanChosenColor)){
+        botWin = botWin + 1;
+        console.log('bot won')
 
-         
-//          console.log(e, index)
-//          //document.querySelector("#pickSides")
-//          //console.log(document.querySelector("#pickSides"))
-//          //console.log(e)
-//          console.log(botBox.outerHTML)
+        
+    }else if(e.indexOf(humanChosenColor) > e.indexOf(botColor)){
 
-//             if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
+        humanWin = humanWin + 1
+        console.log('human won')
+        
+    }else{
+        console.log('tie') //fix
+    }
 
-//                 console.log(' no more moves')
-                
-//                 }
+})
 
+*/
 
-         
-//     }
-//  }
+///check game over or continue ///////////////////////////////
+
+/*var checkAll = document.getElementsByClassName('container')[0].children
+
+for (var i=0; i < checkAll.length; i++){
+   
+    var isGameOver = checkAll[i]
     
+          
+         if(checkAll[i].style.borderLeftColor.indexOf(botColor) > -1){
+            console.log(checkAll[i])
+        }
+        
     
-// })
+}*/
