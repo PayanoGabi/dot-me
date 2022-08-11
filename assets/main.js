@@ -296,3 +296,37 @@ for (var i=0; i < checkAll.length; i++){
         
     
 }*/
+
+
+/** 
+ * checks if no more moves
+ * 
+ * var checkAll = document.getElementsByClassName('container')[0].children
+var arrayLength = 0;
+var isGameOver;
+
+for (var i=0; i < checkAll.length; i++){
+    
+          
+         if(checkAll[i].style.borderLeftColor && checkAll[i].style.borderTopColor && checkAll[i].style.borderRightColor && checkAll[i].style.borderBottomColor){
+             
+           console.log(checkAll[i])
+             arrayLength ++
+             isGameOver = arrayLength;
+             
+        }
+        
+    
+}
+
+if(isGameOver < 20) {
+
+    console.log('continue playing')
+
+    
+} else if(isGameOver == 20 ){
+    console.log('game over')
+    alert('Game over  - winner is ')
+}
+    
+} */
