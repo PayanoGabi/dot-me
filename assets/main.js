@@ -195,16 +195,16 @@ var cantTouchThis;
   function playBot(){
 
     var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
-
     var array = [botBox.style.borderRightColor, botBox.style.borderLeftColor, botBox.style.borderBottomColor, botBox.style.borderTopColor];
-    //var countThis = 0;
+
+    var countThis = 0;
 
         for (i=0;i<array.length;i++) {
         if (array[i] == botColor || array[i] == humanChosenColor) {
+            countThis++
+            //console.log(countThis)
 
-            countThis++;
-
-            if(i - 1 == 3 ){
+            if(countThis == 4){
                 //console.log(botBox)
                 botBox.style.cssText += "background-color:pink!important"
                 console.log('niii function botUpdate(){')
