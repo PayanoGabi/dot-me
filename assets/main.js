@@ -167,10 +167,9 @@ var cantTouchThis;
 
          if(e.target.innerHTML.indexOf("Bottom") > -1 && pickLine.style.borderBottomColor == ''){
             alert('You have selected the bottom border')
-            pickLine.style.cssText += "border-bottom-color" + ":" + humanChosenColor
-
+            pickLine.style.cssText += "border-bottom-color" + ":" + humanChosenColor;
+            pickLine.style.borderBottomWidth ="13px";
              //pickLine.style.borderBottomColor = humanChosenColor;
-             pickLine.style.borderBottomWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
              playBot() //after human selects , bot selects
@@ -195,7 +194,30 @@ var cantTouchThis;
 
   function playBot(){
 
-    var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)]; //bot pick random block
+    var botBox = clickedBlock[Math.floor(Math.random()*clickedBlock.length)];
+
+    var array = [botBox.style.borderRightColor, botBox.style.borderLeftColor, botBox.style.borderBottomColor, botBox.style.borderTopColor];
+    //var countThis = 0;
+
+        for (i=0;i<array.length;i++) {
+        if (array[i] == botColor || array[i] == humanChosenColor) {
+
+            countThis++;
+
+            if(i - 1 == 3 ){
+                //console.log(botBox)
+                botBox.style.cssText += "background-color:pink!important"
+                console.log('niii function botUpdate(){')
+                playBot()
+
+             } 
+        }
+        }
+
+    //bot pick random block
+
+
+
     botBox.id = "botChosen"; // add ID to bot selected box
 
     botBox.style.backgroundColor = "#f1ab21"
@@ -204,8 +226,18 @@ var cantTouchThis;
     //     console.log('already selected') //if the box has been played by human, message this
         
     // }
+    // if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
+
+    //     pickLine.style.backgroundColor =  "pink";
+    //     pickLine.id = "noMoreMoves"
+    //     //this box is finished
+        
+    //     } 
+
+   
 
     var movesAvail =[]
+    
 
         if(botBox.style.borderBottomColor == ''){
         movesAvail.push('border-bottom-color')
@@ -229,19 +261,37 @@ var cantTouchThis;
         //console.log('nothing left')
 
         }
-        if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
 
-            botBox.style.backgroundColor =  "pink"
-            botBox.id = "noMoreMoves"
-            //this box is finished
-            
-            }
-
+    
 
     //select random
     var aBotsTurn = movesAvail[Math.floor(Math.random()*movesAvail.length)]; 
    // console.log(aBotsTurn)  - the bots line selection
     botBox.style.cssText += aBotsTurn + ":" + botColor;
+
+    
+    
+    var arrayTwo = [botBox.style.borderRightColor, botBox.style.borderLeftColor, botBox.style.borderBottomColor, botBox.style.borderTopColor];
+    var countThis = 0;
+    function botUpdate(){
+        for (i=0;i<arrayTwo.length;i++) {
+            if (arrayTwo[i] == botColor || arrayTwo[i] == humanChosenColor) {
+                
+                countThis++;
+               // console.log('hi')
+           console.log(i);
+            if( countThis == 4){
+                //botBox.style.backgroundColor = "pink"
+                botBox.style.cssText += "background-color:pink!important"
+                console.log('check it iiiii')
+                console.log(arrayTwo)
+                
+            }
+                
+            }
+        }
+    }botUpdate()
+
  
         
         humanPlaying()
@@ -251,7 +301,7 @@ var cantTouchThis;
 
 
 
-  //check win /////////////////////////////////////////
+  //check winner /////////////////////////////////////////
 
  /* var botWin
   var humanWin
@@ -299,7 +349,7 @@ for (var i=0; i < checkAll.length; i++){
 
 
 /** 
- * checks if no more moves
+ * checks if game is over - no more moves
  * 
  * var checkAll = document.getElementsByClassName('container')[0].children
 var arrayLength = 0;
