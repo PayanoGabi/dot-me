@@ -290,11 +290,11 @@ var cantTouchThis;
   console.log(humanWins)
 
     if(botWins > humanWins){
-        console.log('bot has won')
+        alert('bot has won')
     }
     
     if(humanWins > botWins){
-        console.log('You Win')
+        alert('You Win')
     }
     
     if(botWins == humanWins){
