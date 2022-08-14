@@ -90,10 +90,12 @@ li button{
 
 #playerColorA{
   background-color:rgb(42, 255, 209);
+  border-width: 13px;
 }
 
 #playerColorB{
   background-color: #ff2c2c;
+  border-width: 13px;
   
 }
 

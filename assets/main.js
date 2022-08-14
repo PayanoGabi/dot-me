@@ -85,7 +85,7 @@ var cantTouchThis;
                 box = index + 1;  
                 //console.log("You clicked button number " + box);
                 pickLine = e;
-                e.style.backgroundColor = "yellow";
+                e.style.backgroundColor = "#c5bbae";
                 e.classList.add('preSelectedHumanBox')
                 
 
@@ -181,7 +181,9 @@ var cantTouchThis;
 
         if(!pickLine.style.borderLeftColor == '' && !pickLine.style.borderTopColor == '' && !pickLine.style.borderBottomColor == '' && !pickLine.style.borderRightColor == ''){
 
-            pickLine.style.backgroundColor =  "pink";
+            pickLine.style.backgroundColor =  "pink"; 
+            pickLine.classList.add('humanWin')
+            //pickLine.style.backgroundImage="url(/Applications/MAMP/htdocs/Dots/images/game-over-moon.jpg)"; 
             pickLine.id = "noMoreMoves"
             //this box is finished
             
@@ -207,7 +209,7 @@ var cantTouchThis;
             if(countThis == 4){
                 //console.log(botBox)
                 botBox.style.cssText += "background-color:pink!important"
-                console.log('niii function botUpdate(){')
+                //console.log('niii function botUpdate(){')
                 playBot()
 
              } 
@@ -216,24 +218,9 @@ var cantTouchThis;
 
     //bot pick random block
 
-
-
     botBox.id = "botChosen"; // add ID to bot selected box
 
-    botBox.style.backgroundColor = "#f1ab21"
-
-    // if(botBox.outerHTML.indexOf("preSelectedHumanBox") > -1){
-    //     console.log('already selected') //if the box has been played by human, message this
-        
-    // }
-    // if(!botBox.style.borderLeftColor == '' && !botBox.style.borderTopColor == '' && !botBox.style.borderBottomColor == '' && !botBox.style.borderRightColor == ''){
-
-    //     pickLine.style.backgroundColor =  "pink";
-    //     pickLine.id = "noMoreMoves"
-    //     //this box is finished
-        
-    //     } 
-
+    botBox.style.backgroundColor = "#c5bbae"
    
 
     var movesAvail =[]
@@ -268,8 +255,6 @@ var cantTouchThis;
     var aBotsTurn = movesAvail[Math.floor(Math.random()*movesAvail.length)]; 
    // console.log(aBotsTurn)  - the bots line selection
     botBox.style.cssText += aBotsTurn + ":" + botColor;
-
-    
     
     var arrayTwo = [botBox.style.borderRightColor, botBox.style.borderLeftColor, botBox.style.borderBottomColor, botBox.style.borderTopColor];
     var countThis = 0;
@@ -279,79 +264,52 @@ var cantTouchThis;
                 
                 countThis++;
                // console.log('hi')
-           console.log(i);
+           //console.log(i);
             if( countThis == 4){
                 //botBox.style.backgroundColor = "pink"
-                botBox.style.cssText += "background-color:pink!important"
-                console.log('check it iiiii')
-                console.log(arrayTwo)
-                
+                botBox.style.cssText += "background-color:pink!important";
+                botBox.classList.add('botWin')
+               
             }
                 
             }
         }
     }botUpdate()
 
- 
-        
+    gameFinished()
         humanPlaying()
-        
-
     }
 
 
 
-  //check winner /////////////////////////////////////////
+  //check winner 
 
- /* var botWin
-  var humanWin
+  function whosWonAnyway(){
 
-  checkWinner = []
-  checkWinner.push(botBox.style.borderBottomColor,botBox.style.borderTopColor,botBox.style.borderLeftColor, botBox.style.borderRightColor)
+  var humanWins = document.querySelectorAll('.humanWin').length -1
+  var botWins = document.querySelectorAll('.botWin').length -1
 
-  checkWinner.forEach(function(e){
+  console.log(botWins)
+  console.log(humanWins)
 
-    botWin = 0
-    humanWin = 0
-    if(e.indexOf(botColor) > e.indexOf(humanChosenColor)){
-        botWin = botWin + 1;
-        console.log('bot won')
-
-        
-    }else if(e.indexOf(humanChosenColor) > e.indexOf(botColor)){
-
-        humanWin = humanWin + 1
-        console.log('human won')
-        
-    }else{
-        console.log('tie') //fix
+    if(botWins > humanWins){
+        console.log('bot has won')
     }
-
-})
-
-*/
-
-///check game over or continue ///////////////////////////////
-
-/*var checkAll = document.getElementsByClassName('container')[0].children
-
-for (var i=0; i < checkAll.length; i++){
-   
-    var isGameOver = checkAll[i]
     
-          
-         if(checkAll[i].style.borderLeftColor.indexOf(botColor) > -1){
-            console.log(checkAll[i])
-        }
-        
+    if(humanWins > botWins){
+        console.log('You Win')
+    }
     
-}*/
-
-
+    if(botWins == humanWins){
+        alert('Tie')
+    }
+  }
 /** 
- * checks if game is over - no more moves
- * 
- * var checkAll = document.getElementsByClassName('container')[0].children
+ * checks if game is over 
+ **/
+
+function gameFinished(){
+var checkAll = document.getElementsByClassName('container')[0].children
 var arrayLength = 0;
 var isGameOver;
 
@@ -360,23 +318,21 @@ for (var i=0; i < checkAll.length; i++){
           
          if(checkAll[i].style.borderLeftColor && checkAll[i].style.borderTopColor && checkAll[i].style.borderRightColor && checkAll[i].style.borderBottomColor){
              
-           console.log(checkAll[i])
+           //console.log(checkAll[i])
              arrayLength ++
              isGameOver = arrayLength;
              
-        }
-        
-    
+        }  
 }
 
 if(isGameOver < 20) {
 
     console.log('continue playing')
+    humanPlaying()
 
     
 } else if(isGameOver == 20 ){
     console.log('game over')
-    alert('Game over  - winner is ')
+    whosWonAnyway()
+}   
 }
-    
-} */
