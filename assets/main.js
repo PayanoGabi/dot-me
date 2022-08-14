@@ -127,7 +127,7 @@ var cantTouchThis;
             //pickLine.style.borderLeftColor = humanChosenColor;
             pickLine.style.borderLeftWidth=  "13px";
             document.querySelector("body > section").style.display= "none";
-            console.log(cantTouchThis)
+            //console.log(cantTouchThis)
             playBot() //after human selects , bot selects
     
         }else if(e.target.innerHTML.indexOf("Left") > -1 && !pickLine.style.borderLeftColor == ''){
@@ -219,37 +219,31 @@ var cantTouchThis;
     //bot pick random block
 
     botBox.id = "botChosen"; // add ID to bot selected box
-
     botBox.style.backgroundColor = "#c5bbae"
-   
-
     var movesAvail =[]
-    
 
-        if(botBox.style.borderBottomColor == ''){
-        movesAvail.push('border-bottom-color')
-        //console.log('nothing bottom')
+    if(botBox.style.borderBottomColor == ''){
+    movesAvail.push('border-bottom-color')
+    //console.log('nothing bottom')
 
-        }
+    }
 
-        if(botBox.style.borderTopColor == ''){
-        movesAvail.push('border-top-color')
-        //console.log('nothing top')
+    if(botBox.style.borderTopColor == ''){
+    movesAvail.push('border-top-color')
+    //console.log('nothing top')
 
-        }
-        if(botBox.style.borderRightColor == ''){
-        movesAvail.push('border-right-color')
-        //console.log('nothing right')
+    }
+    if(botBox.style.borderRightColor == ''){
+    movesAvail.push('border-right-color')
+    //console.log('nothing right')
 
 
-        }
-        if(botBox.style.borderLeftColor == ''){
-        movesAvail.push('border-left-color')
-        //console.log('nothing left')
+    }
+    if(botBox.style.borderLeftColor == ''){
+    movesAvail.push('border-left-color')
+    //console.log('nothing left')
 
-        }
-
-    
+    }
 
     //select random
     var aBotsTurn = movesAvail[Math.floor(Math.random()*movesAvail.length)]; 
@@ -268,7 +262,10 @@ var cantTouchThis;
             if( countThis == 4){
                 //botBox.style.backgroundColor = "pink"
                 botBox.style.cssText += "background-color:pink!important";
-                botBox.classList.add('botWin')
+                if(!botBox.classList.contains('humanWin')){
+
+                    botBox.classList.add('botWin')
+                }
                
             }
                 
@@ -327,12 +324,12 @@ for (var i=0; i < checkAll.length; i++){
 
 if(isGameOver < 20) {
 
-    console.log('continue playing')
+    //console.log('continue playing')
     humanPlaying()
 
     
 } else if(isGameOver == 20 ){
-    console.log('game over')
+    //console.log('game over')
     whosWonAnyway()
 }   
 }
