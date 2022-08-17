@@ -98,8 +98,19 @@ li button{
   border-width: 13px;
   
 }
+.preSelectedHumanBox{
+  border-width: 13px;
+}
 
 #botChosen{
   border-width: 13px;
+
+}
+#showWinner{
+  display: block;
+  width: 400px;
+  height: 400px;
+  background: bisque;
+  position: absolute;
 
 }

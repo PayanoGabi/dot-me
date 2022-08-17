@@ -125,7 +125,7 @@ var cantTouchThis;
             alert('You have selected the left border')
             pickLine.style.cssText += "border-left-color" + ":" + humanChosenColor
             //pickLine.style.borderLeftColor = humanChosenColor;
-            pickLine.style.borderLeftWidth=  "13px";
+            pickLine.style.borderLeftWidth= "13px";
             document.querySelector("body > section").style.display= "none";
             //console.log(cantTouchThis)
             playBot() //after human selects , bot selects
@@ -153,8 +153,6 @@ var cantTouchThis;
         if(e.target.innerHTML.indexOf("Right") > -1  && pickLine.style.borderRightColor == ''){
             alert('You have selected the right border')
             pickLine.style.cssText += "border-right-color" + ":" + humanChosenColor
-
-            // pickLine.style.borderRightColor = humanChosenColor
              pickLine.style.borderRightWidth = "13px";
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
@@ -169,7 +167,6 @@ var cantTouchThis;
             alert('You have selected the bottom border')
             pickLine.style.cssText += "border-bottom-color" + ":" + humanChosenColor;
             pickLine.style.borderBottomWidth ="13px";
-             //pickLine.style.borderBottomColor = humanChosenColor;
              document.querySelector("body > section").style.display = "none";
              e.stopPropagation();
              playBot() //after human selects , bot selects
@@ -272,35 +269,13 @@ var cantTouchThis;
             }
         }
     }botUpdate()
-
     gameFinished()
         humanPlaying()
     }
 
 
 
-  //check winner 
-
-  function whosWonAnyway(){
-
-  var humanWins = document.querySelectorAll('.humanWin').length -1
-  var botWins = document.querySelectorAll('.botWin').length -1
-
-  console.log(botWins)
-  console.log(humanWins)
-
-    if(botWins > humanWins){
-        alert('bot has won')
-    }
-    
-    if(humanWins > botWins){
-        alert('You Win')
-    }
-    
-    if(botWins == humanWins){
-        alert('Tie')
-    }
-  }
+  //check winne
 /** 
  * checks if game is over 
  **/
@@ -311,25 +286,72 @@ var arrayLength = 0;
 var isGameOver;
 
 for (var i=0; i < checkAll.length; i++){
-    
           
          if(checkAll[i].style.borderLeftColor && checkAll[i].style.borderTopColor && checkAll[i].style.borderRightColor && checkAll[i].style.borderBottomColor){
              
-           //console.log(checkAll[i])
              arrayLength ++
              isGameOver = arrayLength;
              
+             
         }  
+        
 }
 
 if(isGameOver < 20) {
-
     //console.log('continue playing')
     humanPlaying()
 
-    
 } else if(isGameOver == 20 ){
     //console.log('game over')
     whosWonAnyway()
-}   
+     
+    return;
+}  
+return 
 }
+
+
+
+function whosWonAnyway(){
+
+    var humanWins = document.querySelectorAll('.humanWin').length -1
+    var botWins = document.querySelectorAll('.botWin').length -1
+  
+  console.log(botWins)
+  console.log(humanWins)
+  
+      if(botWins > humanWins){
+         // cfunconsole.log('bot has won')
+         var winDiv = document.createElement('div');
+         document.querySelector("body").appendChild(winDiv).id = "showWinner";
+         winDiv.innerHTML = "bot won"
+         
+
+          
+          
+      }else if(humanWins > botWins){
+            // cfunconsole.log('bot has won')
+         var winDiv = document.createElement('div');
+         document.querySelector("body").appendChild(winDiv).id = "showWinner";
+         winDiv.innerHTML = "You win"
+         
+          
+          console.log('You Win')
+          return;  
+         
+         
+      } else if(botWins == humanWins){
+            // cfunconsole.log('bot has won')
+         var winDiv = document.createElement('div');
+         document.querySelector("body").appendChild(winDiv).id = "showWinner";
+         winDiv.innerHTML = " Tie"
+         
+          
+          alert('Tie')
+          return;
+          
+      }else{
+          return
+      }
+      return
+    }
