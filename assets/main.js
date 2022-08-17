@@ -3,6 +3,7 @@ var nextPlayerHuman = true;
 var botColor;
 
 
+
 //Start Game
 document.querySelector("#pickSides").style.display = "none";
 
@@ -303,55 +304,45 @@ function gameFinished() {
         humanPlaying()
 
     } else if (isGameOver == 20) {
-
         whosWonAnyway()
-
     }
 
 }
 
-
+var scoreBot
+var scoreHuman
 
 function whosWonAnyway() {
 
     var humanWins = document.querySelectorAll('.humanWin').length - 1
     var botWins = document.querySelectorAll('.botWin').length - 1
 
-    console.log(botWins)
-    console.log(humanWins)
+    scoreBot = botWins
+    scoreHuman = humanWins
 
     if (botWins > humanWins) {
 
         var winDiv = document.createElement('div');
         document.querySelector("body").appendChild(winDiv).id = "showWinner";
-        winDiv.innerHTML = "bot won"
-
-
+        winDiv.innerHTML = "Bot Won" + "<br>Bot " + scoreBot +" human " + scoreHuman 
 
 
     } else if (humanWins > botWins) {
 
         var winDiv = document.createElement('div');
         document.querySelector("body").appendChild(winDiv).id = "showWinner";
-        winDiv.innerHTML = "You win"
-
-
-        console.log('You Win')
-        return;
+        winDiv.innerHTML = "You Win" + "<br>Bot " + scoreBot +" human " + scoreHuman 
 
 
     } else if (botWins == humanWins) {
 
         var winDiv = document.createElement('div');
         document.querySelector("body").appendChild(winDiv).id = "showWinner";
-        winDiv.innerHTML = "Tie"
+        winDiv.innerHTML = "Tie" + "<br>Bot " + scoreBot +" human " + scoreHuman 
 
-
-        alert('Tie')
-        return;
 
     } else {
-        return
+       
     }
-    return
+   
 }
