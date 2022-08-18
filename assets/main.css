@@ -72,6 +72,52 @@ body{
   height: 30%;
   z-index: 100;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Dosis', sans-serif;
+  border-radius: 10%;
+  font-size: 24px;
+    text-align: center;
+    list-style: none;
+    padding-top: 3%;
+}
+.pickPath > button{
+  position: relative;
+
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 40%;
+  height: 11%;
+}
+
+#pickSides > ul{
+
+  list-style: none;
+  /* justify-content: flex-start; */
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+
 }
 
 button{
@@ -100,12 +146,38 @@ li button{
 }
 .preSelectedHumanBox{
   border-width: 13px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
 }
+
+
 
 #botChosen{
   border-width: 13px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  
+/* transition: .5s ease-in-out; [0.5 seconds] */
+}
+
+#botchosen:hover{
+  background-color: #ffffff; /*white*/
+  transition: 3s ease-in-out;
+}
+.mouse-hov:hover{
+  background-color: #ffffff; 
+  transition: 3s ease-in-out;
+  cursor: grab;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+
+
 
 }
+
+.container > div:hover{
+  background-color: #ffffff; 
+  transition: s ease-in-out;
+
+}
+
 #showWinner{
   width: 316px;
   height: 290px;
@@ -114,5 +186,12 @@ li button{
   display: flex;
   justify-content: center;
   align-items: center;
+
+}
+
+#helpBubble{
+  background-image: url("images/This_Is_BOX.jpg");
+  width: 400px;
+  height: 300px;
 
 }

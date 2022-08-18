@@ -10,6 +10,12 @@ document.querySelector("#pickSides").style.display = "none";
 
 window.onload = function () {
 
+    var  introBubble = document.createElement('div')
+    introBubble.id = "helpBubble"
+    document.querySelector("body").append(introBubble)
+
+
+
     document.querySelector(".container").style.visibility = "hidden";
     document.querySelector("body > section").innerHTML = "Start Game <br>";
     var button = document.createElement("button");
@@ -88,6 +94,9 @@ function humanPlaying() { //Play Game (human) - if any box clicked this is a hum
                 pickLine = e;
                 e.style.backgroundColor = "#c5bbae";
                 e.classList.add('preSelectedHumanBox')
+                e.style.boxShadow = "#c5bbae 0px 5px 15px;"
+                e.classList.add('mouse-hov')
+               
 
 
                 chooseLine();
@@ -218,6 +227,8 @@ function playBot() {
 
     botBox.id = "botChosen";
     botBox.style.backgroundColor = "#c5bbae"
+    botBox.style.boxShadow = "#c5bbae 0px 5px 15px;"
+
     var movesAvail = []
 
     if (botBox.style.borderBottomColor == '') {
