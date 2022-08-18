@@ -190,8 +190,10 @@ li button{
 }
 
 #helpBubble{
-  background-image: url("images/This_Is_BOX.jpg");
-  width: 400px;
-  height: 300px;
+  background-image: url("https://joyful-blini-ed3ea8.netlify.app/images/This_Is_BOX.jpg");
+  object-fit: cover;
+  width: 48%;
+  height: 478px;
+  background-repeat: no-repeat;
 
 }

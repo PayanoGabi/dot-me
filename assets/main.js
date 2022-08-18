@@ -53,6 +53,7 @@ window.onload = function () {
                     botColor = previousSib.style.backgroundColor
                     // console.log(botColor)   
                 }
+                document.querySelector("#helpBubble").style.display= "none"
 
                 document.querySelector(".container").style.visibility = "visible";
                 chooseColor.style.visibility = "hidden";
