@@ -2,6 +2,12 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #AEECF1;
+}
+
+h1,h2,h3,h4,p{
+  font-family: 'Roboto', sans-serif;
+
 }
 
 .container { 
@@ -67,7 +73,7 @@ body{
 
 
 .pickPath{
-  background-color: blue;
+  background-color: #cd5c2b;
   width: 20%;
   height: 30%;
   z-index: 100;
@@ -86,9 +92,9 @@ body{
 .pickPath > button{
   position: relative;
 
-  background-color: rgba(51, 51, 51, 0.05);
+  background-color:#8b2f3b;
   border-radius: 8px;
-  border-width: 0;
+  border-width: 1px;
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
@@ -133,7 +139,11 @@ li button{
   display: flex;
   flex-direction: column;
 }
+#pickColor > p {
+  font-family: 'Roboto', sans-serif;
 
+
+}
 #playerColorA{
   background-color:rgb(42, 255, 209);
   border-width: 13px;
@@ -195,5 +205,23 @@ li button{
   width: 48%;
   height: 478px;
   background-repeat: no-repeat;
+
+}
+/* media query */
+@media only screen and (max-width: 600px) {
+  body{
+    flex-direction: column-reverse;
+  }
+  .pickPath {
+    width: 44%;
+    height: 35%;
+  }
+  #helpBubble {
+    display: none;
+  }
+  .container{
+    height: 85%;
+
+  }
 
 }

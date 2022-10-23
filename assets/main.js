@@ -10,10 +10,6 @@ document.querySelector("#pickSides").style.display = "none";
 
 window.onload = function () {
 
-    var  introBubble = document.createElement('div')
-    introBubble.id = "helpBubble"
-    document.querySelector("body").append(introBubble)
-
 
 
     document.querySelector(".container").style.visibility = "hidden";
@@ -33,27 +29,34 @@ window.onload = function () {
         human.push(chooseColor.childNodes[5])
         human.forEach((e, index) => {
 
-            e.onclick = function () {
+            e.onclick = function (event) {
 
-                //console.log(event)
-                alert('you have chosen' + event.path[0].childNodes[0].data);
-                event.path[0].classList.add('selectedColor')
+                console.log(event);
+                var eventTarget = event.path[0].childNodes[0].data
+                alert('you have chosen' + eventTarget);
+                event.path[0].classList.add('selectedColor');
                 humanChosenColor = event.path[0].style.backgroundColor;
 
                 var nextSib = event.path[0].nextElementSibling;
                 var previousSib = event.path[0].previousElementSibling
 
                 humanChosenColor = event.path[0].style.backgroundColor;
+                //console.log(e)
 
                 if (e.id == 'playerColorA') { //pick color
+                    console.log(nextSib)
+                
                     botColor = nextSib.style.backgroundColor
                     //console.log(botColor)
 
-                } else if (e.id == 'playerColorB') { //pick color
+                } else if (e.id == 'playerColorB') { 
+                    //pick color
+                    console.log(nextSib)
+
                     botColor = previousSib.style.backgroundColor
                     // console.log(botColor)   
                 }
-                document.querySelector("#helpBubble").style.display= "none"
+               
 
                 document.querySelector(".container").style.visibility = "visible";
                 chooseColor.style.visibility = "hidden";
